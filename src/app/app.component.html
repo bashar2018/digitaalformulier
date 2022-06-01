@@ -1,3 +1,114 @@
 <h1>
     Digitaal Formulier
 </h1>
+<p>Selecteer een klant!</p>
+<select
+  name="customer"
+  class="rounded-inputs20 select-select col-md-3"
+  [(ngModel)]="SelectedCustomer"
+  (change)="selected()"
+>
+  <option *ngFor="let customer of customersArr" [ngValue]="customer">
+    {{ customer['Login'].lastName }}
+  </option>
+
+</select>
+<p>
+  Welkom: {{DropDownCustomerSelected.lastName}}
+</p>
+<div class="container">
+  <form [formGroup]="DigitalForm" (ngSubmit)="onSubmit(DigitalForm.value)">
+    <div class="form-group">
+      <label for="Title">Klant_Id</label><br />
+      <input
+        type="text"
+        id="Title"
+        name="Title"
+        class="form-control"
+        formControlName="Title"
+        value="{{ DropDownCustomerSelected.id }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="Voornaam">Voornaam</label><br />
+      <input
+        type="text"
+        id="Voornaam"
+        name="Voornaam"
+        class="form-control"
+        formControlName="Voornaam"
+        value="{{ DropDownCustomerSelected.firstName }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="Achternaam">Achternaam</label><br />
+      <input
+        type="text"
+        id="Achternaam"
+        name="Achternaam"
+        class="form-control"
+        formControlName="Achternaam"
+        value="{{ DropDownCustomerSelected.lastName }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="Geslacht">Geslacht</label><br />
+      <input
+        type="text"
+        id="Geslacht"
+        name="Geslacht"
+        class="form-control"
+        formControlName="Geslacht"
+        value="{{ DropDownCustomerSelected.gender }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="Email">Email</label><br />
+      <input
+        type="text"
+        id="Email"
+        name="Email"
+        class="form-control"
+        formControlName="Email"
+        value="{{DropDownCustomerSelected.email }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="Adres">Selecteer het afleveradres</label><br/>
+      <select
+        name="Adres"
+        id="Adres"
+        formControlName="Adres"
+        class="rounded-inputs20 select-select col-md-3"
+        [(ngModel)]="SelectedAddress"
+        (change)="selected()"
+      >
+        <option *ngFor="let adres of adressessListSelected" [ngValue]="adres">
+          {{ adres.addressLine1 }} {{ adres.addressLine2 }}
+        </option>
+
+      </select>
+      <p>{{DropDownSelectedAddress}}</p>
+    </div>
+    <div class="form-group">
+      <label for="Verkoopkantoor">Verkoopkantoor</label><br/>
+      <input
+        type="text"
+        class="form-control form-control-sm"
+        id="Verkoopkantoor"
+        name="Verkoopkantoor"
+        formControlName="Verkoopkantoor"
+        value="{{ salesBranchListSelected }}"
+      />
+    </div>
+    <div class="form-group">
+      <label for="Hulpmiddelen">Hulpmiddelen</label><br />
+      <textarea
+        id="Hulpmiddelen"
+        placeholder="Schrijf wat u wilt bestellen"
+        formControlName="Hulpmiddelen"
+      ></textarea>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+</div>
