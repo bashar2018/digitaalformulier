@@ -76,10 +76,8 @@ export class AppComponent implements OnInit {
     //Selected item of customer array
     this.DropDownCustomerSelected = this.SelectedCustomer['Login'];
 
-
-
     this.adressessListSelected = this.SelectedCustomer['Login']['addresses'];
-    this.DropDownSelectedAddress = this.SelectedAddress.addressLine1 +this.SelectedAddress.addressLine2;
+    this.DropDownSelectedAddress = this.SelectedAddress.addressLine1 +" "+this.SelectedAddress.addressLine2;
 
     this.salesBranchListSelected =
       this.DropDownCustomerSelected['salesBranch'].name;
