@@ -1,38 +1,35 @@
 <app-header></app-header>
 <!doctype html>
-
 <html lang="en">
-<head>
-  <title >
+  <head>
+    <title>Digitaal Bestelformulier</title>
+    <meta charset="utf-8">
+    <base href="/">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+  </head>
+  <body>
+  <div class="wrapper">
+  <h1 class="label" style="color: #007d30; margin-top: 10px">
     Digitaal Bestelformulier
-  </title>
-  <meta charset="utf-8">
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-</head>
-<body>
-<h1 class="label">
-  Digitaal Bestelformulier
-</h1>
-<p>Selecteer een klant!</p>
-<div class="container">
-  <select
-    name="customer"
-    class="rounded-inputs20 select-select col-md-3"
-    [(ngModel)]="SelectedCustomer"
-    (change)="selected()"
-  >
-    <option *ngFor="let customer of customersArr" [ngValue]="customer">
-      {{ customer['Login'].lastName }}
-    </option>
-
-  </select>
+  </h1>
+  <p>Selecteer een klant!</p>
+  <div class="container">
+    <select
+      name="customer"
+      class="rounded-inputs20 select-select col-md-3"
+      [(ngModel)]="SelectedCustomer"
+      (change)="selected()">
+      <option *ngFor="let customer of customersArr" [ngValue]="customer">
+        {{ customer['Login'].lastName }}
+      </option>
+    </select>
+  </div>
   <div class="container">
     <form [formGroup]="DigitalForm" (ngSubmit)="onSubmit(DigitalForm.value)">
       <div class="form-group">
         <div class="label">
-          <label for="Title">Klant_Id</label>
+          <label class="label" for="Title">Klant_Id</label>
         </div>
         <input
           type="text"
@@ -40,8 +37,7 @@
           name="Title"
           class="form-control"
           formControlName="Title"
-          value="{{ DropDownCustomerSelected.id }}"
-        />
+          value="{{ DropDownCustomerSelected.id }}"/>
       </div>
       <div class="form-group">
         <div class="label">
@@ -53,8 +49,7 @@
           name="Voornaam"
           class="form-control"
           formControlName="Voornaam"
-          value="{{ DropDownCustomerSelected.firstName }}"
-        />
+          value="{{ DropDownCustomerSelected.firstName }}"/>
       </div>
       <div class="form-group">
         <div class="label">
@@ -66,8 +61,7 @@
           name="Achternaam"
           class="form-control"
           formControlName="Achternaam"
-          value="{{ DropDownCustomerSelected.lastName }}"
-        />
+          value="{{ DropDownCustomerSelected.lastName }}"/>
       </div>
       <div class="form-group">
         <div class="label">
@@ -79,8 +73,7 @@
           name="Geslacht"
           class="form-control"
           formControlName="Geslacht"
-          value="{{ DropDownCustomerSelected.gender }}"
-        />
+          value="{{ DropDownCustomerSelected.gender}}"/>
       </div>
       <div class="form-group">
         <div class="label">
@@ -92,8 +85,7 @@
           name="Email"
           class="form-control"
           formControlName="Email"
-          value="{{DropDownCustomerSelected.email }}"
-        />
+          value="{{DropDownCustomerSelected.email}}"/>
       </div>
       <div class="form-group">
         <div class="label">
@@ -105,12 +97,10 @@
           formControlName="Adres"
           class="rounded-inputs20 select-select col-md-3"
           [(ngModel)]="SelectedAddress"
-          (change)="selected()"
-        >
-          <option *ngFor="let adres of adressessListSelected" [ngValue]="adres">
-            {{ adres.addressLine1 }} {{ adres.addressLine2 }}
-          </option>
-
+          (change)="selected()">
+            <option *ngFor="let adres of adressessListSelected" [ngValue]="adres">
+              {{ adres.addressLine1 }} {{ adres.addressLine2 }}
+            </option>
         </select>
         <p class="label">{{DropDownSelectedAddress}}</p>
       </div>
@@ -124,8 +114,7 @@
           id="Verkoopkantoor"
           name="Verkoopkantoor"
           formControlName="Verkoopkantoor"
-          value="{{ salesBranchListSelected }}"
-        />
+          value="{{ salesBranchListSelected}}"/>
       </div>
       <div class="form-group">
         <div class="label">
@@ -134,13 +123,13 @@
         <textarea
           id="Hulpmiddelen"
           placeholder="Schrijf wat u wilt bestellen"
-          formControlName="Hulpmiddelen"
-        ></textarea>
+          formControlName="Hulpmiddelen"></textarea>
       </div>
-      <button type="submit">Submit</button>
+      <div class="button">
+        <button type="submit" style="border-radius: 8px; margin-top: 12px;padding: 0 15px; color: white">Bestelling Indienen</button>
+      </div>
     </form>
   </div>
-
-</div>
-</body>
+  </div>
+ </body>
 </html>
